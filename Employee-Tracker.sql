@@ -14,7 +14,7 @@ CREATE TABLE role (
   id INTEGER NOT NULL
   AUTO_INCREMENT,
   title VARCHAR(30),
-  salary DECIMAL(6,2)
+  salary DECIMAL(6,2),
   department_id INT,
   CONSTRAINT emp_department
     FOREIGN KEY (department_id) 
@@ -33,15 +33,16 @@ CREATE TABLE employee (
   role_id INT,
   CONSTRAINT emp_role
     FOREIGN KEY (role_id) 
-        REFERENCES role(role_id)
+        REFERENCES role(id)
   manager_id INT,
   CONSTRAINT emp_manager
     FOREIGN KEY (manager_id) 
-        REFERENCES role(title.id)
+        REFERENCES employee(id)
 );
 
 
-SELECT * FROM role;
-SELECT * FROM deparment;
+-- SELECT * FROM role;
+-- SELECT * FROM deparment;
+-- SELECT * FROM employee;
 
-
+INSERT INTO department (name) VALUES ("Software Engineering");
